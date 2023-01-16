@@ -1,0 +1,5 @@
+site_name: YaMi RPG Editor 
+theme: readthedocs
+nav:
+    - Home: index.md
+    - Actor.js: actor.md

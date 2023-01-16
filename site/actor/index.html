@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Actor.js - YaMi RPG Editor</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Actor.js";
+        var mkdocs_page_input_path = "actor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> YaMi RPG Editor
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Actor.js</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#party">Party类（玩家队伍管理器）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">方法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">方法详情</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#team">Team类（势力队伍管理器）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">方法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">方法详情</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">YaMi RPG Editor</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Actor.js</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1"></h1>
+<h2 id="party">Party类（玩家队伍管理器）</h2>
+<p><strong>处理玩家队伍</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">内置变量</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>player</code></td>
+<td align="center">玩家角色对象.</td>
+</tr>
+<tr>
+<td align="left"><code>members</code></td>
+<td align="center">玩家队伍成员列表.</td>
+</tr>
+<tr>
+<td align="left"><code>version</code></td>
+<td align="center">队伍版本(随着队伍成员的添加和移除发生变化).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">方法</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#reset">reset()</a></td>
+<td align="center">重置队伍角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#createPlayer">createPlayer()</a></td>
+<td align="center">创建玩家角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#createMembers">createMembers()</a></td>
+<td align="center">创建玩家队伍成员.</td>
+</tr>
+<tr>
+<td align="left"><a href="#setPlayer">setPlayer()</a></td>
+<td align="center">设置玩家角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#addMember">addMember()</a></td>
+<td align="center">添加玩家队伍成员.</td>
+</tr>
+<tr>
+<td align="left"><a href="#removeMember">removeMember()</a></td>
+<td align="center">移除玩家队伍成员.</td>
+</tr>
+<tr>
+<td align="left"><a href="#shareInventory">shareInventory()</a></td>
+<td align="center">共享玩家角色包裹.</td>
+</tr>
+<tr>
+<td align="left"><a href="#saveData">saveData()</a></td>
+<td align="center">保存队伍角色数据.</td>
+</tr>
+<tr>
+<td align="left"><a href="#loadData">loadData()</a></td>
+<td align="center">加载队伍角色数据.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">方法详情</h3>
+<ul>
+<li><a name="reset">reset()</a></li>
+</ul>
+<p>说明：无参数，重置队伍角色</p>
+<hr />
+<ul>
+<li><a name="createPlayer">createPlayer()</a></li>
+</ul>
+<p>说明：无参数，创建玩家角色</p>
+<hr />
+<ul>
+<li><a name="createMembers">createMembers()</a></li>
+</ul>
+<p>说明：无参数，创建玩家队伍成员</p>
+<hr />
+<ul>
+<li><a name="setPlayer">setPlayer(actor)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actor</td>
+<td align="center">GlobalActor</td>
+<td align="center">玩家角色.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：设置玩家角色</p>
+<hr />
+<ul>
+<li><a name="addMember">addMember(actor)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actor</td>
+<td align="center">GlobalActor</td>
+<td align="center">队伍成员.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：添加玩家队伍成员</p>
+<hr />
+<ul>
+<li><a name="removeMember">removeMember(actor)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actor</td>
+<td align="center">GlobalActor</td>
+<td align="center">队伍成员.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：移除玩家队伍成员</p>
+<hr />
+<ul>
+<li><a name="shareInventory">shareInventory()</a></li>
+</ul>
+<p>说明：共享玩家角色包裹</p>
+<hr />
+<ul>
+<li><a name="saveData">saveData()</a></li>
+</ul>
+<p>说明：保存队伍角色数据</p>
+<hr />
+<ul>
+<li><a name="loadData">loadData(party)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">party</td>
+<td align="center">Object</td>
+<td align="center">party类型数据.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：加载队伍角色数据</p>
+<hr />
+<h2 id="team">Team类（势力队伍管理器）</h2>
+<p><strong>处理玩家队伍势力</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">内置变量</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>key</code></td>
+<td align="center">队伍的键(ID)列表.</td>
+</tr>
+<tr>
+<td align="left"><code>relationMaps</code></td>
+<td align="center">队伍关系表(0:敌对, 1:友好).</td>
+</tr>
+<tr>
+<td align="left"><code>defaultId</code></td>
+<td align="center">默认队伍键(ID).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">方法</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#buildRelationMaps">buildRelationMaps()</a></td>
+<td align="center">构建角色队伍的关系映射表.</td>
+</tr>
+<tr>
+<td align="left"><a href="#isEnemy">isEnemy()</a></td>
+<td align="center">判断敌对关系.</td>
+</tr>
+<tr>
+<td align="left"><a href="#isFriendly">isFriendly()</a></td>
+<td align="center">判断友好关系.</td>
+</tr>
+<tr>
+<td align="left"><a href="#changeRelation">changeRelation()</a></td>
+<td align="center">改变角色队伍的关系.</td>
+</tr>
+<tr>
+<td align="left"><a href="#saveData">saveData()</a></td>
+<td align="center">保存队伍关系数据.</td>
+</tr>
+<tr>
+<td align="left"><a href="#loadData">loadData()</a></td>
+<td align="center">加载队伍关系数据.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">方法详情</h3>
+<ul>
+<li><a name="buildRelationMaps">buildRelationMaps(keys, code)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">key</td>
+<td align="center">string[]</td>
+<td align="center">队伍的ID列表.</td>
+</tr>
+<tr>
+<td align="left">code</td>
+<td align="center">string</td>
+<td align="center">队伍的关系代码.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：构建角色队伍的关系映射表</p>
+<hr />
+<ul>
+<li><a name="isEnemy">isEnemy()</a></li>
+</ul>
+<p>说明：判断敌对关系</p>
+<hr />
+<ul>
+<li><a name="isFriendly">isFriendly()</a></li>
+</ul>
+<p>说明：判断友好关系</p>
+<hr />
+<ul>
+<li><a name="changeRelation">changeRelation(teamId1, teamId2, relation)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">teamId1</td>
+<td align="center">string</td>
+<td align="center">队伍ID1.</td>
+</tr>
+<tr>
+<td align="left">teamId2</td>
+<td align="center">string</td>
+<td align="center">队伍ID2.</td>
+</tr>
+<tr>
+<td align="left">relation</td>
+<td align="center">number</td>
+<td align="center">队伍1和队伍2的关系(0:敌对, 1:友好).</td>
+</tr>
+</tbody>
+</table>
+<p>说明：改变角色队伍的关系</p>
+<hr />
+<ul>
+<li><a name="saveData">saveData()</a></li>
+</ul>
+<p>说明：保存队伍关系数据</p>
+<hr />
+<ul>
+<li><a name="loadData">loadData(team)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">team</td>
+<td align="center">object</td>
+<td align="center">team.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：加载队伍关系数据</p>
+<hr />
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
