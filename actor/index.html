@@ -63,6 +63,14 @@
     </li>
         </ul>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#actormanager">ActorManager类（全局角色管理器）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">方法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">方法详情</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -423,6 +431,183 @@
 </tbody>
 </table>
 <p>说明：加载队伍关系数据</p>
+<hr />
+<h2 id="actormanager">ActorManager类（全局角色管理器）</h2>
+<p><strong>存放玩家数据，可全局获取</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">内置变量</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>list</code></td>
+<td align="center">全局角色列表.</td>
+</tr>
+<tr>
+<td align="left"><code>idMap</code></td>
+<td align="center">全局角色ID映射表(ID-&gt;实例).</td>
+</tr>
+<tr>
+<td align="left"><code>entityIdMap</code></td>
+<td align="center">全局角色实体ID映射表(实体ID-&gt;实例).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">方法</h3>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="#reset_ActorManager">reset()</a></td>
+<td align="center">重置全局角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#clearGlobalActors_ActorManager">clearGlobalActors()</a></td>
+<td align="center">清除所有全局角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#creat_ActorManager">create()</a></td>
+<td align="center">创建全局角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#delete_ActorManager">delete()</a></td>
+<td align="center">删除全局角色.</td>
+</tr>
+<tr>
+<td align="left"><a href="#get_ActorManager">get()</a></td>
+<td align="center">保存队伍关系数据.</td>
+</tr>
+<tr>
+<td align="left"><a href="#generateEntityId_ActorManager">generateEntityId()</a></td>
+<td align="center">生成角色实体ID.</td>
+</tr>
+<tr>
+<td align="left"><a href="#saveData_ActorManager">saveData()</a></td>
+<td align="center">保存全局角色列表数据.</td>
+</tr>
+<tr>
+<td align="left"><a href="#loadData_ActorManager">loadData()</a></td>
+<td align="center">加载全局角色列表数据.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">方法详情</h3>
+<ul>
+<li><a name="reset_ActorManager">reset()</a></li>
+</ul>
+<p>说明：重置全局角色</p>
+<hr />
+<ul>
+<li><a name="clearGlobalActors_ActorManager">clearGlobalActors()</a></li>
+</ul>
+<p>说明：清除所有全局角色</p>
+<hr />
+<ul>
+<li><a name="create">create(actorId, savedData)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actorId</td>
+<td align="center">string</td>
+<td align="center">角色文件ID.</td>
+</tr>
+<tr>
+<td align="left">savedData</td>
+<td align="center">Object</td>
+<td align="center">角色存档数据.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：创建全局角色</p>
+<hr />
+<ul>
+<li><a name="delete_ActorManager">delete(actorId)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actorId</td>
+<td align="center">string</td>
+<td align="center">角色文件ID.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：删除全局角色</p>
+<hr />
+<ul>
+<li><a name="get_ActorManager">get(actorId)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actorId</td>
+<td align="center">string</td>
+<td align="center">角色文件ID.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：获取全局角色</p>
+<hr />
+<ul>
+<li><a name="generateEntityId_ActorManager">generateEntityId()</a></li>
+</ul>
+<p>说明：保存全局角色列表数据</p>
+<hr />
+<ul>
+<li><a name="saveData_generateEntityId">saveData()</a></li>
+</ul>
+<p>说明：保存全局角色列表数据</p>
+<hr />
+<ul>
+<li><a name="loadData_generateEntityId">loadData(actors)</a></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="center">类型</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">actors</td>
+<td align="center">object</td>
+<td align="center">.</td>
+</tr>
+</tbody>
+</table>
+<p>说明：加载全局角色列表数据</p>
 <hr />
               
             </div>
